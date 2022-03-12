@@ -1,0 +1,5 @@
+#时间的全局配置
+spring:
+  jackson:
+    date-format: yyyy年MM月dd日 HH:mm:ss
+    time-zone: GMT+8

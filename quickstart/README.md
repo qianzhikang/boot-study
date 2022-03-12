@@ -40,6 +40,27 @@ Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来�
 
    ![image-20220307161030960](https://pic-go.oss-cn-shanghai.aliyuncs.com/typora-img/202203071610016.png)
 
+## 核心概念
+
+### Spring 框架 
+
+Spring框架最核⼼的特性就是 
+
+- 依赖注⼊ DI（Dependency Injection
+- 控制反转 IoC（Inversion Of Control）
+
+如果能够合理的使⽤DI和IoC，就可以开发出松耦合、扩展性好的的应⽤程序。
+
+
+
+### Spring MVC 
+
+Spring MVC提供了⼀种友好的⽅式来开发Web应⽤程序。 通过使⽤诸如Dispatcher Servlet， ModelAndView和View Resolver，可以轻松开发。
+
+### Spring Boot
+
+使用⾃动配置技术，当Spring中加⼊⼀些新的jar包，加⼊⼀些配 置，可以⾃动影响应⽤内bean的加载。
+
 ## 关于lombok
 
 lombok（常用）：
