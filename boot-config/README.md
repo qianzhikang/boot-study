@@ -269,7 +269,7 @@ father:
 
 
 
-## 6. Spring记载xml配置的bean实现自动装配
+## 6. Spring加载xml配置的bean实现自动装配
 
 ### @ImportResource注解的使用
 
