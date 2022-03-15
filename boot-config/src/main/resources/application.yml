@@ -1,0 +1,34 @@
+family:
+  family-name: ENC(pZ92gnZd7KN0ot1D4PpycudHzgSerpf7X7VBePiJVCf8zfxfNgARnJyCOWT7zp2y)
+  father:
+    name: "tom"
+#    age: ${random.int(30)}
+    age: 22
+    email: "123123@qq.com"
+  mother:
+    alias:
+      - "rose"
+      - "alice"
+  child:
+    name: "jack"
+    age: 6
+    friends:
+      - hobby: "football"
+        gender: "male"
+      - hobby: "football"
+        gender: "female"
+
+
+#主配置文件
+#spring:
+#  profiles:
+#    active: dev
+
+#server:
+#  port: 8888
+
+
+#jasypt加密的密匙
+jasypt:
+  encryptor:
+    password: Y6M9fAJQdU7jNp5MW

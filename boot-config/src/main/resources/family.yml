@@ -1,0 +1,18 @@
+family:
+  family-name: "happy family"
+  father:
+    name: "tom"
+    age: 22
+    email: "123123@qq.com"
+  mother:
+    alias:
+      - "rose"
+      - "alice"
+  child:
+    name: "jack"
+    age: 6
+    friends:
+      - hobby: "football"
+        gender: "male"
+      - hobby: "football"
+        gender: "female"
