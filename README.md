@@ -27,3 +27,8 @@
 - 配置文件加载的优先级
 - 配置文件加密
 
+## day4
+
+- SpringBoot整合Spring JDBC
+- SpringBoot整合Spring JPA
+

@@ -19,6 +19,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "article")
 public class Article implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
