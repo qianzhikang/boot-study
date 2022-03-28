@@ -7,7 +7,7 @@
         <module>boot-restful</module>
         <module>boot-config</module>
         <module>boot-orm</module>
-        <module>untitled</module>
+        <module>boot-mybatis</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
