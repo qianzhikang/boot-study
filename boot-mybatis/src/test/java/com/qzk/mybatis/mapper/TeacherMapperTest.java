@@ -7,7 +7,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @Description TODO
@@ -24,7 +23,5 @@ class TeacherMapperTest {
     @Test
     public void test1(){
         System.out.println(teacherMapper.findOneByOne(1));
-
     }
-
 }

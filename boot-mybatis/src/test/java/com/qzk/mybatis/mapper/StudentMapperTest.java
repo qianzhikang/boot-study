@@ -61,7 +61,7 @@ class StudentMapperTest {
     @Test
     void batchDelete() {
 
-        List<Integer> ids = Arrays.asList(3010, 3011);
+        List<Integer> ids = Arrays.asList(3038, 3039);
         int i = studentMapper.batchDelete(ids);
         System.out.println(i + "行数据被删除");
     }
@@ -71,10 +71,9 @@ class StudentMapperTest {
     void batchUpdate() {
         List<Student> students = new ArrayList<>();
         for (int i = 1; i <= 3; i++) {
-            students.add(Student.builder().studentId(3010 + i).studentName("新名字" + i).build());
+            students.add(Student.builder().studentId(3030 + i).studentName("名字" + i).build());
         }
-        int i = studentMapper.batchUpdate(students);
-        System.out.println(i + "行记录受影响");
+        studentMapper.batchUpdate(students);
     }
 
 
@@ -93,7 +92,7 @@ class StudentMapperTest {
         PageHelper.startPage(1,2);
         List<Student> students = studentMapper.findStudentBy(new Student());
         PageInfo<Student> page = PageInfo.of(students);
-        System.out.println(page.getPageNum());
+        System.out.println(page);
     }
 
 

@@ -81,6 +81,8 @@
                            ON ts.course_id = cc.course_id
         WHERE s.student_id = #{studentId}
     </select>
+
+
     <select id="findStudentBy" resultType="com.qzk.mybatis.entity.Student">
         SELECT *
         FROM t_student

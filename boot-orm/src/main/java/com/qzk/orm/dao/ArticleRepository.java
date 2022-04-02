@@ -2,6 +2,7 @@ package com.qzk.orm.dao;
 
 import com.qzk.orm.entity.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @Date 2022-03-18-14-58
  * @Author Courage
  */
+@RepositoryRestResource(path="articles")
 public interface ArticleRepository extends JpaRepository<Article,Integer> {
 
     /**
