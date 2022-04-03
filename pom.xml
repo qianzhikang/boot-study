@@ -8,6 +8,9 @@
         <module>boot-config</module>
         <module>boot-orm</module>
         <module>boot-mybatis</module>
+		<module>boot-mybatis-plus</module>
+		<module>boot-static</module>
+		<module>boot-freemarker</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
