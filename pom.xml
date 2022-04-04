@@ -12,6 +12,7 @@
 		<module>boot-static</module>
 		<module>boot-freemarker</module>
 		<module>boot-thymeleaf</module>
+		<module>boot-interceptor</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
