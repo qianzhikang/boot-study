@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}">
+    <style>
+        .even{
+            background-color: #CCFFCC;
+        }
+
+        .odd{
+            background-color: #CCFF99;
+        }
+    </style>
+</head>
+<body>
+<div class="container overflow-hidden">
+    <h1 class="text-primary">Thymeleaf页面</h1>
+    <table class="table table-bordered table-striped table-hover">
+        <tr style="background-color: #f6f6f6;">
+            <th>name</th>
+            <th>age</th>
+            <th>address</th>
+        </tr>
+        <tr th:each="item : ${personList}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.age}"></td>
+            <td th:text="${item.address != null ? item.address : '没有填写地址！！'}"></td>
+        </tr>
+    </table>
+
+    <div class="row">
+        <div class="col-4">
+            <label for="name" class="form-label">name:
+                <input type="text" class="" id="name" th:value="${personList[0].getName()}">
+            </label>
+        </div>
+
+        <div class="col-4">
+            <label for="age" class="form-label">age:
+                <input type="text" class="" id="age" th:value="${personList[0].getAge()}">
+            </label>
+        </div>
+
+        <div class="col-4">
+            <label for="address" class="form-label">address:
+                <input type="text" class="" id="address" th:value="${personList[0].getAddress()}">
+            </label>
+        </div>
+    </div>
+
+
+
+    <div class="row" th:object="${personList[0]}">
+        <div class="col-4">
+            <label for="name1" class="form-label">name:
+                <input type="text" class="" id="name1" th:value="*{name}">
+            </label>
+        </div>
+
+        <div class="col-4">
+            <label for="age1" class="form-label">age:
+                <input type="text" class="" id="age1" th:value="*{age}">
+            </label>
+        </div>
+
+        <div class="col-4">
+            <label for="address1" class="form-label">address:
+                <input type="text" class="" id="address1" th:value="*{address}">
+            </label>
+        </div>
+
+
+        <table class="table table-bordered table-hover">
+            <tr style="background-color: #888888;">
+                <th>name</th>
+                <th>age</th>
+                <th>address</th>
+            </tr>
+            <tr th:each="item,stat : ${personList}" th:class="${stat.even} ? 'even':'odd'">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.age}"></td>
+                <td th:text="${item.address != null ? item.address : '没有填写地址！！'}"></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

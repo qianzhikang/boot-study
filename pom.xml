@@ -11,6 +11,7 @@
 		<module>boot-mybatis-plus</module>
 		<module>boot-static</module>
 		<module>boot-freemarker</module>
+		<module>boot-thymeleaf</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
