@@ -1,0 +1,14 @@
+file:
+  upload-path: C:\Users\Courage\Desktop\upload\
+
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${file.upload-path}
+
+
+minio:
+  endPoint: http://124.221.233.62:9000
+  accessKey: admin
+  secretKey: admin123

@@ -2,6 +2,8 @@ package com.qzk.plus.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qzk.plus.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -122,5 +124,29 @@ class UserMapperTest {
         System.out.println("受影响的行数："+row);
     }
 
+
+
+    //分页查询（有总记录条数）
+    @Test
+    void selectByPage1(){
+        QueryWrapper<User> query = new QueryWrapper<>();
+        Page<User> page = userMapper.selectPage(new Page<User>(1,2), query);
+        System.out.println("总页数：  " + page.getPages());
+        System.out.println("总记录数：  " + page.getTotal());
+        List<User> records = page.getRecords();
+        records.forEach(System.out::println);
+    }
+
+
+    //分页查询（无总记录条数）
+    @Test
+    void selectByPage2(){
+        QueryWrapper<User> query = new QueryWrapper<>();
+        Page<User> page = userMapper.selectPage(new Page<User>(1,2,false), query);
+        System.out.println("总页数：  " + page.getPages());
+        System.out.println("总记录数：  " + page.getTotal());
+        List<User> records = page.getRecords();
+        records.forEach(System.out::println);
+    }
 
 }

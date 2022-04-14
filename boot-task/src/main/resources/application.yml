@@ -1,0 +1,33 @@
+spring:
+  mail:
+    host: smtp.qq.com
+    username: qzkqianzhikang@qq.com
+    password: jozoslvybamjbbgf
+    protocol: smtp
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.port: 465
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: UTF-8
+
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 16
+        keep-alive: 60s
+        allow-core-thread-timeout: true
+        queue-capacity: 100
+      thread-name-prefix: task-
+
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/quartz?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+    driverClassName: com.mysql.cj.jdbc.Driver
+  quartz:
+    job-store-type: JDBC #数据库存储quartz任务配置
+    jdbc:
+      initialize-schema: NEVER #⾃动初始化表结构，第⼀次启动的时候这⾥写always

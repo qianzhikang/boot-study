@@ -1,0 +1,24 @@
+#logging:
+#  level: {
+#           com.qzk.boot.controller.TestController: trace
+#  }
+
+#logging:
+#  level:
+#    root: info
+#    com.qzk.boot.controller: debug
+#  file:
+#    path: 'C:\Users\Courage\Desktop\logs'
+#    name: 'C:\Users\Courage\Desktop\logs\boot-log.log'
+#  logback:
+#    rollingpolicy:
+#      max-file-size: 10MB
+#      max-history: 7
+#  pattern:
+#    console: "%red(%d{yyyy-MM-dd HH:mm:ss}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{10} - %cyan(%msg%n))"
+#    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger : %msg%n"
+
+#
+#spring:
+#  profiles:
+#    active: prod

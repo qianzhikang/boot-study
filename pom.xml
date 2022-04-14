@@ -13,6 +13,11 @@
 		<module>boot-freemarker</module>
 		<module>boot-thymeleaf</module>
 		<module>boot-interceptor</module>
+		<module>boot-embed-server</module>
+		<module>boot-exception</module>
+		<module>boot-log</module>
+		<module>boot-task</module>
+		<module>boot-file</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
