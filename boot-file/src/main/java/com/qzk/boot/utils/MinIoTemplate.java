@@ -3,6 +3,7 @@ package com.qzk.boot.utils;
 import io.minio.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import java.io.InputStream;
  */
 @Component
 @Configuration
+@PropertySource(value = "classpath:minio.properties",encoding = "utf-8")
 public class MinIoTemplate {
     @Value("${minio.endPoint}")
     private String endPoint;

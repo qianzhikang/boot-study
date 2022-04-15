@@ -7,8 +7,14 @@ spring:
     resources:
       static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${file.upload-path}
 
-
-minio:
-  endPoint: http://124.221.233.62:9000
-  accessKey: admin
-  secretKey: admin123
+qzk:
+  fastdfs:
+    httpserver: http://124.221.233.62:8888/ # 在使用FastDFSClientUtil会得到完整的http文件访问路径
+    connect_timeout: 30
+    network_timeout: 30
+    charset: UTF-8
+    tracker_server: # tracker_server 可以配置成数组
+      - 124.221.233.62:22122
+    max_total: 50
+    http_anti_steal_token: false # 如果有防盗链的话，这里true
+    http_secret_key: # 有防盗链，这里填secret_key
