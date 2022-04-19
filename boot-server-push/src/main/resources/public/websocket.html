@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <label for="content">
+            输入昵称
+            <input type="text" v-model="nickname" id="nickname" placeholder="请输入昵称">
+        </label>
+        <button @click="open()">连接WebSocket</button>
+    </div>
+    <div>
+        <label for="content">
+            输入内容
+            <input type="text" v-model="content" id="content" placeholder="请输入内容">
+        </label>
+        <button @click="sendMessage()">发送消息</button>
+    </div>
+    <div>
+        {{message}}
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: "#app",
+        data() {
+            return {
+                ws: null,
+                nickname: '',
+                content: '',
+                message: '显示消息',
+            }
+        },
+        methods: {
+            open() {
+                //创建连接
+                ws = new WebSocket(`ws://localhost:8888/websocket?nickname=${this.nickname}`);
+                ws.onopen = () => {
+                    if (this.nickname === ""){
+                        alert("请输入昵称！")
+                        return;
+                    }
+                    console.log("websocket已经连接")
+                };
+                ws.onclose = () => {
+                    console.log("websocket已关闭")
+                };
+                ws.onerror = () => {
+                    console.log("websocket发生异常")
+                };
+                ws.onmessage = (msg) => {
+                    console.log(msg);
+                    this.message = this.message.concat(msg.data);
+                }
+            },
+            sendMessage() {
+                ws.send(this.content);
+                console.log("发送成功");
+                this.content = '';
+
+            },
+        }
+    })
+</script>
+</body>
+</html>

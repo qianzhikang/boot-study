@@ -20,6 +20,8 @@
 		<module>boot-file</module>
 		<module>boot-actuator</module>
 		<module>boot-admin</module>
+		<module>boot-cache</module>
+		<module>boot-server-push</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
