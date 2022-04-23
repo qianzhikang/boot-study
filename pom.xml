@@ -22,6 +22,7 @@
 		<module>boot-admin</module>
 		<module>boot-cache</module>
 		<module>boot-server-push</module>
+		<module>boot-jwt</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

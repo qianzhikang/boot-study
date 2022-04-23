@@ -83,6 +83,7 @@ public class MinIoTemplate {
         return instance.putObject(
                 PutObjectArgs.builder()
                         .bucket(bucketName)
+                        .contentType("'jpg', 'image/jpeg'")
                         .object(objectName).stream(inputStream, -1, 10485760)
                         .build());
     }
