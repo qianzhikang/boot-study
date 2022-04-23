@@ -1,28 +1,5 @@
 # Redis和Spring Cache
 
-## 远程服务器上的Redis
-
-1. 拉取redis
-
-   ```bash
-   docker pull redis
-   ```
-
-2. 创建文件
-
-   ```bash
-   mkdir /home/docker/redis/{conf,data} -p
-   ```
-
-3. 修改文件 
-
-   > 
-
-4. 启动容器：
-
-   ```bash
-   docker run --name myredis -d -p 6379:6379 -v $PWD/data:/data -v $PWD/conf/redis.conf:/etc/redis/redis.conf --privileged=true redis:latest redis-server /etc/redis/redis.conf
-   ```
 
 ## Redis简介
 
@@ -468,4 +445,66 @@ public class ArticleController {
 
 ![image-20220417230707986](https://pic-go.oss-cn-shanghai.aliyuncs.com/typora-img/202204172307099.png)
 
-# 未完成待续...
+## 远程服务器上的Redis
+
+### 使用Docker安装Redis
+
+1. 拉取redis
+
+   ```bash
+   docker pull redis
+   ```
+
+2. 创建文件
+
+   ```bash
+   mkdir /home/docker/redis/{conf,data} -p
+   ```
+
+3. 本地下载对应版本的redis，拷贝redis.conf，并修改部分内容 
+
+   ![redis.conf文件位置](https://pic-go.oss-cn-shanghai.aliyuncs.com/typora-img/202204240109751.png)
+
+   > 更改redis.conf配置文件（更改前建议先备份原始文件，更改备份后的文件）：
+   >
+   > 1. 注释 `bind 127.0.0.1`。这里限制redis只能本地访问，注释掉之后使redis可以外部访问；
+   > 2. `protected-mode yes` 修改为 protected-mode no。默认yes，开启保护模式，限制仅本地访问，改为no之后使redis可以外部访问；
+   > 3. `daemonize no` 。默认no，当前界面将进入redis的命令行界面，exit强制退出或者关闭连接工具(putty,xshell等)都会导致redis进程退出。 改为yes意为以守护进程方式启动，该模式下，redis会在后台运行，并将进程pid号写入至redis.conf选项pidfile设置的文件中，此时redis将一直运行，除非手动kill该进程，如果改为yes会使以配置文件方式启动redis的方式失败。
+   > 4. `requirepass pwd`。这里的pwd是自己设置的密码，可以不开启，不开启表示无需密码即可连接。
+   > 5. `databases 16`。默认数据库个数16，可以不修改。
+   > 6. `appendonly no`。默认 no，表示不开启aof方式持久化，改为appendonly yes表示开启aof，可以不修改该配置。
+   >
+   > **主要是前两个配置，用于实现可以远程访问，如果只需要本地访问，则无需修改。**
+
+4. 拷贝修改后的文件到远程服务器的 `/home/docker/redis/conf`下
+
+4. 启动容器：
+
+   ```bash
+   docker run -p 6379:6379 --name redis -v /home/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v /home/docker/redis/data:/data -d redis redis-server /etc/redis/redis.conf
+   ```
+   
+   > 1. `-p 6379:6379`：把容器内的6379端口映射到宿主机6379端口。
+   > 2. `--name redis`：指定容器名称。
+   > 3. `-v /home/docker/redis/conf/redis.conf:/etc/redis/redis.conf`：把宿主机配置好的redis.conf放到容器内的这个位置中。
+   > 4. `-v /home/docker/redis/data:/data`：把redis持久化的数据映射在宿主机内。
+   > 5. `-d`：以守护进程的方式启动容器。
+   >    redis-server /etc/redis/redis.conf：让redis按照redis.conf的配置启动。
+   
+6. 使用`docker ps`检查是否启动成功：
+
+   ![启动成功](https://pic-go.oss-cn-shanghai.aliyuncs.com/typora-img/202204240118120.png)
+
+### 本地连接远程服务器的Redis
+
+> Another Redis Desktop Manager 介绍
+
+Another Redis Desktop Manager是一款将Redis操作可视化的软件。
+
+下载：https://github.com/qishibo/AnotherRedisDesktopManager
+
+下载完成后新建连接，在地址处输入服务器的ip地址和端口号，如有密码也进行输入，点击连接即可。
+
+![新建远程链接](https://pic-go.oss-cn-shanghai.aliyuncs.com/typora-img/202204240122561.png)
+
+![连接成功](https://pic-go.oss-cn-shanghai.aliyuncs.com/typora-img/202204240124057.png)
